@@ -24,7 +24,7 @@ func bookList() {
 }
 
 
-func isAvailable(book *entity.Book) (bool, int) {
+func isBookAvailable(book *entity.Book) (bool, int) {
 
 	for i:=0; i<len(listOfBooks); i++ {
 		if (book == listOfBooks[i]) {
@@ -40,7 +40,7 @@ func List() []*entity.Book{
 
 func Add(book *entity.Book) (bool, error){
 
-	isAvailable, _ := isAvailable(book)
+	isAvailable, _ := isBookAvailable(book)
 	if (isAvailable) {
 		return false, errors.New("Element already exists")
 	}
@@ -50,7 +50,7 @@ func Add(book *entity.Book) (bool, error){
 
 func Delete(book *entity.Book) (bool, error) {
 	
-	isAvailable, index := isAvailable(book)
+	isAvailable, index := isBookAvailable(book)
 	if (!isAvailable) {
 		return false, errors.New("Element does not exists")
 	}
