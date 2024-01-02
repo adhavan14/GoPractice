@@ -1,5 +1,6 @@
 package entity
 
+
 type User struct {
 
 	username string
@@ -19,6 +20,6 @@ func (user *User) AuthenticateUser(username, password string) bool {
 	return user.username == username && user.password == password
 }
 
-func (user *User) Equals(username string) bool {
-	return user.username == username
+func (user *User) Equals(currentUser *User) bool {
+	return user.username == currentUser.username
 }

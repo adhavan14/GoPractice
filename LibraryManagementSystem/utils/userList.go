@@ -27,10 +27,10 @@ func Authenticate(username, password string) bool {
 	return false
 }
 
-func isUserAvailable(username string) bool {
+func isUserAvailable(user *entity.User) bool {
 
 	for i := 0; i < len(listOfAccount); i++ {
-		if (listOfAccount[i].User).Equals(username) {
+		if (listOfAccount[i].User).Equals(user) {
 			return true
 		}
 	}
@@ -38,13 +38,13 @@ func isUserAvailable(username string) bool {
 }
 
 
-func Register(username, password, name string) (bool, error) {
+func Register(user *entity.User) (bool, error) {
 
-	if (isUserAvailable(username)) {
+	if (isUserAvailable(user)) {
 		return false, errors.New("Username already exists")
 	}
 
-	account := entity.NewAccount(entity.NewUser(username, password, name), []*entity.BorrowedBooks{}, 0.0, true)
+	account := entity.NewAccount(user, []*entity.BorrowedBooks{}, 0.0, true)
 	listOfAccount = append(listOfAccount, account)
 	return true, nil
 }
