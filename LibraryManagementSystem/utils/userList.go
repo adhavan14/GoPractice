@@ -11,11 +11,10 @@ var listOfAccount []*entity.Account
 func CreateAccount() {
 
 	listOfAccount = []*entity.Account{
-		entity.NewAccount(entity.NewUser("adhavan@gamil.com", "Adhav@1405", "Adhavan"), []*entity.BorrowedBooks{}, 0.0, true),
+		entity.NewAccount(entity.NewUser("adhav", "adhav", "Adhavan"), []*entity.BorrowedBooks{}, 0.0, true),
 		entity.NewAccount(entity.NewUser("meena@gmail.com", "Meena@0405", "Meena"), []*entity.BorrowedBooks{}, 0.0, true),
 	}
 }
-
 
 func Authenticate(username, password string) bool {
 
@@ -28,7 +27,6 @@ func Authenticate(username, password string) bool {
 }
 
 func isUserAvailable(user *entity.User) bool {
-
 	for i := 0; i < len(listOfAccount); i++ {
 		if (listOfAccount[i].User).Equals(user) {
 			return true

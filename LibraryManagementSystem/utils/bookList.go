@@ -8,7 +8,7 @@ import (
 
 var listOfBooks []*entity.Book
 
-func bookList() {
+func BookList() {
 	listOfBooks = []*entity.Book {
 		entity.NewBook(1, "The Grass is Always Greener", "Jeffrey Archer", "Modern Times"),
 		entity.NewBook(2, "Murder!", "Arnold Bennett", "Crime"),
