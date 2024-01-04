@@ -16,14 +16,14 @@ func CreateAccount() {
 	}
 }
 
-func Authenticate(username, password string) bool {
+func Authenticate(username, password string) *entity.Account {
 
 	for i := 0; i < len(listOfAccount); i++ {
 		if listOfAccount[i].User.AuthenticateUser(username, password) {
-			return true
+			return listOfAccount[i]
 		}
 	}
-	return false
+	return nil
 }
 
 func isUserAvailable(user *entity.User) bool {

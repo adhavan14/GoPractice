@@ -55,7 +55,16 @@ func Delete(book *entity.Book) (bool, error) {
 		return false, errors.New("Element does not exists")
 	}
 
-	listOfBooks = append(listOfBooks[:index], listOfBooks[index +1:]...)
+	listOfBooks = append(listOfBooks[:index], listOfBooks[index+1:]...)
 	return true, nil
 }
 
+func FindById(id int) *entity.Book {
+
+	for i := 0; i < len(listOfBooks); i++ {
+		if listOfBooks[i].Id == id {
+			return listOfBooks[i]
+		}
+	}
+	return nil
+}

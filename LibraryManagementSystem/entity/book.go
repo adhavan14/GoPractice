@@ -1,7 +1,10 @@
 package entity
 
+import "fmt"
+
+
 type Book struct {
-	id int
+	Id int
 	title string
 	author string
 	category string
@@ -9,9 +12,13 @@ type Book struct {
 
 func NewBook(id int, title, author, category string) *Book {
 	return &Book{
-		id: id,
+		Id: id,
 		title: title,
 		author: author,
 		category: category,
 	}
+}
+
+func (book *Book) ToStringInBook() string{
+	return "Id : " + fmt.Sprintf("%d",book.Id) + " Title : " + book.title + " Author : " + book.author + " Category : " + book.category
 }

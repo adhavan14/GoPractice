@@ -23,3 +23,7 @@ func (user *User) AuthenticateUser(username, password string) bool {
 func (user *User) Equals(currentUser *User) bool {
 	return user.username == currentUser.username
 }
+
+func (user *User) ToStringInUser() string {
+	return "Username : " + user.username + " Name : " + user.name
+}

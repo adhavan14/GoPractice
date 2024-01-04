@@ -16,47 +16,47 @@ func main() {
 	fmt.Println("------------Welcome-----------")
 	fmt.Println("Library Management System")
 
-	var option string
-	fmt.Println("1---->Register")
-	fmt.Println("2---->Login")
-	fmt.Println("3---->Exit")
-	fmt.Println()
-	fmt.Println("Choose the option : ")
-	fmt.Scan(&option)
+	for {
+		var option string
+		fmt.Println("1---->Register")
+		fmt.Println("2---->Login")
+		fmt.Println("other---->Exit")
+		fmt.Println()
+		fmt.Print("Choose the option : ")
+		fmt.Scan(&option)
 
-	switch option {
-	case "1":
-		err := register()
-		if (err != nil) {
-			fmt.Println(err)
-			return
-		} 
-		fmt.Println("User registered successfully")
-		fmt.Println("Please login")
-		result := login()
-		if (!result) {
-			fmt.Println("Login failed")
-			return
-		}
-		fmt.Println("Login successful")
-		utils.BookOperation()
-	case "2":
-		result := login()
-		if (!result) {
-			fmt.Println("Login failed")
-			return
-		}
-		fmt.Println("Login successful")
-		utils.BookOperation()
-	case "3":
-		os.Exit(0)
-	default:
-		fmt.Println("Choose the valid option")
+		switch option {
+		case "1":
+			err := register()
+			if (err != nil) {
+				fmt.Println(err)
+				return
+			} 
+			fmt.Println("User registered successfully")
+			fmt.Println("Please login")
+			result := login()
+			if (result == nil) {
+				fmt.Println("Login failed")
+				return
+			}
+			fmt.Println("Login successful")
+			utils.BookOperation(result)
+		case "2":
+			result := login()
+			if (result == nil) {
+				fmt.Println("Login failed")
+				return
+			}
+			fmt.Println("Login successful")
+			utils.BookOperation(result)
+		default:
+			os.Exit(0)
+		}	
 	}
 }
 
 
-func login() bool {
+func login() *entity.Account {
 
 	var username, password string
 	username = getInput("Enter the username : ")
