@@ -3,16 +3,29 @@ package utils
 import (
 	"errors"
 	"example/App/LibraryManagementSystem/entity"
+	"fmt"
+	"strings"
 )
 
 
 var listOfAccount []*entity.Account
 
+
 func CreateAccount() {
 
-	listOfAccount = []*entity.Account{
-		entity.NewAccount(entity.NewUser("adhav", "adhav", "Adhavan"), []*entity.BorrowedBooks{}, 0.0, true),
-		entity.NewAccount(entity.NewUser("meena@gmail.com", "Meena@0405", "Meena"), []*entity.BorrowedBooks{}, 0.0, true),
+	data, err := loadData("resources/users.txt")
+
+	if (err != nil) {
+		fmt.Println(err)
+		return
+	}
+	
+	for _, d := range data {
+
+		attributes := strings.Split(d, ",")
+		account := entity.NewAccount(entity.NewUser(strings.Trim(attributes[0], " "), strings.Trim(attributes[1], " "), strings.Trim(attributes[2], " ")), 
+									[]*entity.BorrowedBooks{}, 0.0, true)
+		listOfAccount = append(listOfAccount, account)
 	}
 }
 
