@@ -29,7 +29,7 @@ func BookOperation(account *entity.Account) {
 					}
 			case "2": borrowBook(account)
 			case "3": dropBook(account)
-			case "4": payFine()
+			case "4": payFine(account)
 			case "5": fmt.Println(account.ToStringInAccount())
 			default : return
 		}
@@ -70,6 +70,20 @@ func dropBook(account *entity.Account) {
 	account.DropBook(book)
 }
 
-func payFine() {
-
+func payFine(account *entity.Account) {
+	
+	if account.IsFinePaid() {
+		fmt.Println("No fine currently")
+		return
+	}
+	var amount float64
+	fmt.Print("Enter the amount to be paid : ")
+	fmt.Scan(&amount)
+	err := account.PayFine(amount)
+	
+	if (err != nil) {
+		fmt.Println(err)
+		return
+	} 
+	fmt.Println("Fine paid successfully")
 }
