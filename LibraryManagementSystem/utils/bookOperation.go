@@ -28,8 +28,11 @@ func BookOperation(account *entity.Account) {
 						fmt.Println(totalBooks[i].ToStringInBook())
 					}
 			case "2": borrowBook(account)
+					  storeAccount()
 			case "3": dropBook(account)
+					  storeAccount()
 			case "4": payFine(account)
+					  storeAccount()
 			case "5": fmt.Println(account.ToStringInAccount())
 			default : return
 		}
@@ -86,4 +89,15 @@ func payFine(account *entity.Account) {
 		return
 	} 
 	fmt.Println("Fine paid successfully")
+}
+
+func storeAccount() {
+
+	var filepath string = "resources/account.txt"
+
+	var data string
+	for i := 0; i < len(listOfAccount); i++ {
+		data = data + listOfAccount[i].ToStringInAccount() +"\n"
+	}
+	writeData(filepath, data)
 }

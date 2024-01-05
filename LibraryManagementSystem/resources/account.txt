@@ -1,0 +1,9 @@
+User : { Username : adhav Name : adhavan}
+Borrowed books : [
+Book : Id : 1 Title : The Grass is Always Greener Author : Jeffrey Archer Category : Modern Times Date : 2024-01-05 15:33:55.684572 +0530 IST m=+11.381056844
+]
+Fine : 0.00
+User : { Username : meena@gmail.com Name : meena}
+Borrowed books : [
+]
+Fine : 0.00

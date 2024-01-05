@@ -75,13 +75,13 @@ func (account *Account) PayFine(amount float64) error {
 }
 
 func (account *Account) ToStringInAccount() string {
-	var user string =  account.User.ToStringInUser() + "\n"
+	var user string =  account.User.ToStringInUser() + "}\n"
 	var borrowBook string = "[\n"
 	for i := 0; i < len(account.borrowedBooks); i++ {
 		borrowBook += account.borrowedBooks[i].ToStringInBorrowedBook() + "\n"
 	}
 	borrowBook += "]\n"
-	return "User : " + user + "Borrowed books : " + borrowBook + "Fine : " + fmt.Sprintf("%0.2f", account.fineAmount)
+	return "User : { " + user + "Borrowed books : " + borrowBook + "Fine : " + fmt.Sprintf("%0.2f", account.fineAmount)
 }
 
 func calculateFine(account *Account, index int) float64 {
